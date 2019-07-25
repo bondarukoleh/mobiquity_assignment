@@ -1,0 +1,30 @@
+{
+  "name": "mobiquity_assignment",
+  "version": "1.0.0",
+  "description": "Mobiquity assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor protractor.conf.js",
+    "report": "allure generate -c && allure open",
+    "postinstall": "webdriver-manager update --gecko=false",
+    "lint": "eslint \"**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bondarukoleh/mobiquity_assignment.git"
+  },
+  "author": "Oleh Bondaruk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bondarukoleh/mobiquity_assignment/issues"
+  },
+  "homepage": "https://github.com/bondarukoleh/mobiquity_assignment#readme",
+  "dependencies": {
+    "protractor": "^5.4.2",
+    "mocha": "^6.2.0",
+    "chai": "4.1.1",
+    "mocha-allure-reporter": "^1.4.0",
+    "allure-commandline": "^2.9.0",
+    "eslint": "^6.1.0"
+  }
+}
