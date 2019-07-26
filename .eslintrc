@@ -1,18 +1,22 @@
 {
   "env": {
-      "commonjs": true,
-      "es6": true,
-      "mocha": true,
-      "node": true
+    "commonjs": true,
+    "es6": true,
+    "mocha": true,
+    "node": true
   },
   "globals": {
-      "someGlobalVariable": true
+    "browser": true,
+    "element": true,
+    "by": true,
+    "$": true
   },
   "parserOptions": {
-      "ecmaVersion": 2018
+    "ecmaVersion": 2018
   },
   "rules": {
-      "no-undef": 1,
-      "no-var": 1
+    "no-undef": 1,
+    "no-var": 1,
+    "semi": 1
   }
 }

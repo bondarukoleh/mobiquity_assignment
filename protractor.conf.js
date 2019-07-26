@@ -1,3 +1,6 @@
+const {mainUrl} = require('./data');
+const ENV_ARGS = process.argv.slice(2);
+
 module.exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
   // seleniumSessionId: ,
@@ -6,10 +9,10 @@ module.exports.config = {
   mochaOpts: {
     timeout: 30 * 1000,
     fullTrace: true,
-    reporter: 'mocha-allure-reporter'
+    reporter: ENV_ARGS.includes('--debug') ? 'spec' : 'mocha-allure-reporter'
   },
   specs: ['./specs/**/*.spec.*'],
-  baseUrl: 'http://www.google.com',
+  baseUrl: mainUrl,
   allScriptsTimeout: 30 * 1000,
   multiCapabilities: [
     {
@@ -26,6 +29,6 @@ module.exports.config = {
   ],
   onPrepare: async () => {
     await browser.manage().window().maximize();
-    browser.ignoreSynchronization = true;
+    // browser.ignoreSynchronization = true;
   },
-}
+};
