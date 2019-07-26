@@ -7,13 +7,13 @@ class Input {
 
   async click() {
     await waitForVisible(this.root);
-    await this.root.click();
+    await this.root.$('input').click();
   }
 
   async sendKeys(data) {
     await waitForVisible(this.root);
-    await this.root.clear();
-    return this.root.sendKeys(data);
+    await this.root.$('input').clear();
+    return this.root.$('input').sendKeys(data);
   }
 
   async getData() {
@@ -23,7 +23,7 @@ class Input {
         value: rootElement.querySelector('input').value,
         label: rootElement.querySelector('span') ? rootElement.querySelector('span').innerText : '',
       };
-    }, this.root.getElement());
+    }, this.root.getWebElement());
   }
 }
 

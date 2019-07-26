@@ -2,8 +2,8 @@ const {Button, Input} = require('../elements');
 
 class LoginPage {
   constructor() {
-    this.userNameField = new Input($('label [ng-model="user.name"]'));
-    this.userPasswordField = new Input($('label [ng-model="user.password"]'));
+    this.userNameField = new Input(element(by.xpath('//input[@ng-model="user.name"]//parent::label')));
+    this.userPasswordField = new Input(element(by.xpath('//input[@ng-model="user.password"]//parent::label')));
     this.loginButton = new Button($('button.main-button'));
   }
 

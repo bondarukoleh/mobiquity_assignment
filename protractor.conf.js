@@ -3,8 +3,8 @@ const ENV_ARGS = process.argv.slice(2);
 
 module.exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  // seleniumSessionId: ,
-  directConnect: true,
+  seleniumSessionId: '2b2acfdcc1043d8d8c0636e22d498908',
+  // directConnect: true,
   framework: 'mocha',
   mochaOpts: {
     timeout: 30 * 1000,
@@ -29,6 +29,8 @@ module.exports.config = {
   ],
   onPrepare: async () => {
     await browser.manage().window().maximize();
-    // browser.ignoreSynchronization = true;
+    browser.clearState = async function (){
+      await browser.manage().deleteAllCookies();
+    };
   },
 };

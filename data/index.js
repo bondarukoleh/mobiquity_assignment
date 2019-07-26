@@ -1,4 +1,4 @@
 module.exports = {
   ...require('./urls'),
-   ...require('./users')
+  ...require('./users')
 };

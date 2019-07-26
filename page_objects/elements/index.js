@@ -1,5 +1,6 @@
 module.exports = {
   ...require('./button'),
   ...require('./input'),
-  ...require('./text')
+  ...require('./text'),
+  ...require('./list')
 };
