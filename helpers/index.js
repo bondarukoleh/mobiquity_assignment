@@ -1,3 +1,4 @@
 module.exports = {
-  ...require('./waiters')
+  ...require('./waiters'),
+  ...require('./userHelper')
 };

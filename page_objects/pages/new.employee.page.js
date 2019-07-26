@@ -33,7 +33,7 @@ class NewEmployeePage {
   }
 
   async clickLogoutButton(){
-    return this.headerFragment.logout();
+    return this.headerFragment.clickLogout();
   }
 
   async getLogoutButton(){

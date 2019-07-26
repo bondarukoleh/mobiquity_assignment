@@ -19,7 +19,7 @@ class LoginPage {
     return this.loginButton.click();
   }
 
-  async login({name, pass}) {
+  async login({name = '', pass = ''} = {}) {
     await this.enterUserName(name);
     await this.enterPassword(pass);
     return this.clickLoginButton();

@@ -3,8 +3,8 @@ const ENV_ARGS = process.argv.slice(2);
 
 module.exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  seleniumSessionId: '2b2acfdcc1043d8d8c0636e22d498908',
-  // directConnect: true,
+  // seleniumSessionId: '',
+  directConnect: false,
   framework: 'mocha',
   mochaOpts: {
     timeout: 30 * 1000,

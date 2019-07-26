@@ -6,7 +6,7 @@ class HeaderFragment {
     this.userInfo = new Text($('#greetings'));
   }
 
-  async logout(){
+  async clickLogout(){
     return this.logout.click();
   }
 
