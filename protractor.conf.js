@@ -17,7 +17,7 @@ module.exports.config = {
   multiCapabilities: [
     {
       browserName: 'chrome',
-      maxInstances: 1,
+      maxInstances: 3,
       version: '70',
       chromeOptions: {
         args: [

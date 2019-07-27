@@ -1,8 +1,7 @@
 const {expect} = require('chai');
-const {loginPage, employeesPage, editEmployeePage, newEmployeePage} = require('../page_objects');
+const {loginPage, employeesPage} = require('../page_objects');
 const {commonUser, urls} = require('../data');
-const {getAnyEmployee} = require('../helpers');
-const faker = require('faker');
+const {getAnyUser} = require('../helpers');
 
 describe('Login suite', function () {
   beforeEach(async function () {
@@ -29,10 +28,12 @@ describe('Login suite', function () {
   });
 
   it('Login with wrong name and password', async function () {
-    const notExistingUser = getAnyEmployee();
-    await loginPage.login({name: notExistingUser.fistName, pass: faker.internet.password()});
-    const url = await browser.getCurrentUrl();
-    expect(url).to.equal(urls.login, `User with wrong name and password should not log in`);
+    const notExistingUser = getAnyUser();
+    const errorMessage = 'Invalid username or password!';
+    
+    await loginPage.login({name: notExistingUser.name, pass: notExistingUser.password});
+    const message = await loginPage.getErrorMessage();
+    expect(message).to.equal(errorMessage, `Message with text "${errorMessage}" should be shown`);
   });
 
   it('Logout user', async function () {

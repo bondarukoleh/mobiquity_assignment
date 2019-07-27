@@ -11,7 +11,7 @@ class HeaderFragment {
   }
 
   async getLogout(){
-    return this.logout.getText();
+    return this.logout.getData();
   }
 
   async getUserInfo(){

@@ -10,9 +10,14 @@ class Button {
     await this.root.click();
   }
 
-  async getText() {
+  async getData() {
     await waitForVisible(this.root);
-    return this.root.getText();
+    return {
+      text: await this.root.getText(),
+      enabled: await browser.executeScript(function(root){
+        return !root.getAttribute('class').includes('disabled');
+      }, this.root.getWebElement())
+    };
   }
 }
 

@@ -17,4 +17,16 @@ const getAnyEmployee = () => {
   };
 };
 
-module.exports = {getAnyEmployee};
+/**
+ * @returns {Object} user
+ * @returns {string} user.name
+ * @returns {string} user.password
+ */
+const getAnyUser = () => {
+  return {
+    name: `${faker.name.firstName()}_${faker.name.lastName()}`,
+    password: faker.internet.password(),
+  };
+};
+
+module.exports = {getAnyEmployee, getAnyUser};

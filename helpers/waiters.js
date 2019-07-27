@@ -10,4 +10,8 @@ async function waitForVisible(element, timeToWait = 3000) {
     `Element ${element.locator} should be visible.`);
 }
 
-module.exports = {waitForVisible};
+async function waitForAlert(timeToWait = 3000) {
+  await browser.wait(ExpectedConditions.alertIsPresent(), timeToWait, `Alert should present`);
+}
+
+module.exports = {waitForVisible, waitForAlert};

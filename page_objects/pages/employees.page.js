@@ -1,13 +1,34 @@
-const {Button, List} = require('../elements');
+const {Button, List, Alert} = require('../elements');
 const {HeaderFragment} = require('../fragments');
+const {stepDecorator} = require('../../helpers');
+
+const methodsToDecorate = [
+  'clickOnEmployee',
+  'getEmployees',
+  'clickCreateButton',
+  'getCreateButton',
+  'clickEditButton',
+  'getEditButton',
+  'clickDeleteButton',
+  'getDeleteButton',
+  'clickLogoutButton',
+  'getLogoutButton',
+  'getUserInfo',
+  'confirmDeleteEmployee',
+  'declineDeleteEmployee',
+  'getDeleteEmployeeAlert',
+  'deleteEmployee'
+];
 
 class EmployeesPage {
   constructor() {
     this.headerFragment = new HeaderFragment();
     this.create = new Button($('#bAdd'));
-    this.update = new Button($('#bEdit'));
+    this.edit = new Button($('#bEdit'));
     this.delete = new Button($('#bDelete'));
     this.employees = new List($('#employee-list'));
+    this.deleteAlert = new Alert();
+    stepDecorator(this, methodsToDecorate);
   }
 
   async clickOnEmployee(employeeName) {
@@ -18,40 +39,58 @@ class EmployeesPage {
     return this.employees.getData();
   }
 
-  async clickCreateButton(){
+  async clickCreateButton() {
     return this.create.click();
   }
 
-  async getCreateButton(){
-    return this.create.getText();
+  async getCreateButton() {
+    return this.create.getData();
   }
 
-  async clickUpdateButton(){
-    return this.update.click();
+  async clickEditButton() {
+    return this.edit.click();
   }
 
-  async getUpdateButton(){
-    return this.update.getText();
+  async getEditButton() {
+    return this.edit.getData();
   }
 
-  async clickDeleteButton(){
+  async clickDeleteButton() {
     return this.delete.click();
   }
 
-  async getUpdateButton(){
-    return this.delete.getText();
+  async getDeleteButton() {
+    return this.delete.getData();
   }
 
-  async clickLogoutButton(){
+  async clickLogoutButton() {
     return this.headerFragment.clickLogout();
   }
 
-  async getLogoutButton(){
+  async getLogoutButton() {
     return this.headerFragment.getLogout();
   }
 
-  async getUserInfo (){
+  async getUserInfo() {
     return this.headerFragment.getUserInfo();
+  }
+
+  async confirmDeleteEmployee() {
+    await this.deleteAlert.accept();
+  }
+
+  async declineDeleteEmployee() {
+    await this.deleteAlert.cancel();
+  }
+
+  async getDeleteEmployeeAlert() {
+    return this.deleteAlert.getText();
+  }
+
+  async deleteEmployee(employeeName) {
+    await this.clickOnEmployee(employeeName);
+    await this.clickDeleteButton();
+    await this.confirmDeleteEmployee();
   }
 }
 

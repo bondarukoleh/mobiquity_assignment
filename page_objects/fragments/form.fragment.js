@@ -2,9 +2,9 @@ const {Button, Input} = require('../elements');
 
 class FormFragment {
   constructor() {
-    this.add = new Button($('button.ng-hide'));
-    this.delete = new Button($('.formFooter p'));
-    this.update = new Button($('button:not(.ng-hide)'));
+    this.add = new Button(element(by.buttonText('Add')));
+    this.delete = new Button(element(by.buttonText('Delete')));
+    this.update = new Button(element(by.buttonText('Update')));
     this.fistName = new Input(element(by.xpath('//input[contains(@ng-model, "firstName")]//parent::label')));
     this.lastName = new Input(element(by.xpath('//input[contains(@ng-model, "lastName")]//parent::label')));
     this.startDate = new Input(element(by.xpath('//input[contains(@ng-model, "startDate")]//parent::label')));
@@ -16,7 +16,7 @@ class FormFragment {
   }
 
   async getAdd() {
-    return this.add.getText();
+    return this.add.getData();
   }
 
   async clickUpdate() {
@@ -24,7 +24,7 @@ class FormFragment {
   }
 
   async getUpdate() {
-    return this.update.getText();
+    return this.update.getData();
   }
 
   async clickDelete() {
@@ -32,7 +32,7 @@ class FormFragment {
   }
 
   async getDelete() {
-    return this.delete.getText();
+    return this.delete.getData();
   }
 
   /**

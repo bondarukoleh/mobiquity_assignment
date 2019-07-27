@@ -1,4 +1,5 @@
 module.exports = {
   ...require('./waiters'),
-  ...require('./userHelper')
+  ...require('./userHelper'),
+  ...require('./allureStepDecorator')
 };

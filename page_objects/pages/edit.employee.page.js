@@ -1,11 +1,27 @@
 const {Button} = require('../elements');
 const {HeaderFragment, FormFragment} = require('../fragments');
+const {stepDecorator} = require('../../helpers');
+
+const methodsToDecorate = [
+  'fillEditForm',
+  'getEditForm',
+  'clickUpdateButton',
+  'getUpdateButton',
+  'clickDeleteButton',
+  'getDeleteButton',
+  'clickLogoutButton',
+  'getLogoutButton',
+  'getUserInfo',
+  'clickBackButton',
+  'getBackButton'
+];
 
 class EditEmployeePage {
   constructor() {
     this.headerFragment = new HeaderFragment();
     this.formFragment = new FormFragment();
     this.back = new Button($('.bBack'));
+    stepDecorator(this, methodsToDecorate);
   }
 
   async fillEditForm({fistName, lastName, startDate, email}) {
@@ -20,28 +36,36 @@ class EditEmployeePage {
     return this.formFragment.clickUpdate();
   }
 
-  async getUpdateButton(){
+  async getUpdateButton() {
     return this.formFragment.getUpdateButton();
   }
 
-  async clickDeleteButton(){
+  async clickDeleteButton() {
     return this.formFragment.clickDelete();
   }
 
-  async getDeleteButton(){
+  async getDeleteButton() {
     return this.formFragment.getDelete();
   }
 
-  async clickLogoutButton(){
+  async clickLogoutButton() {
     return this.headerFragment.clickLogout();
   }
 
-  async getLogoutButton(){
+  async getLogoutButton() {
     return this.headerFragment.getLogout();
   }
 
-  async getUserInfo(){
+  async getUserInfo() {
     return this.headerFragment.getUserInfo();
+  }
+
+  async clickBackButton() {
+    await this.back.click();
+  }
+
+  async getBackButton() {
+    await this.back.getData();
   }
 }
 
