@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Mobiquity assignment",
   "scripts": {
+    "start:driver": "webdriver-manager start",
     "test": "protractor protractor.conf.js",
     "test:debug": "protractor protractor.conf.js --debug",
     "test:direct": "protractor protractor.conf.js --directConnect",
@@ -28,6 +29,6 @@
     "mocha": "^6.2.0",
     "mocha-allure-reporter": "^1.4.0",
     "moment": "^2.24.0",
-    "protractor": "^5.4.2"
+    "protractor": "5.4.2"
   }
 }

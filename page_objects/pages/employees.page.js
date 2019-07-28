@@ -12,7 +12,6 @@ const methodsToDecorate = [
   'clickDeleteButton',
   'getDeleteButton',
   'clickLogoutButton',
-  'getLogoutButton',
   'getUserInfo',
   'confirmDeleteEmployee',
   'declineDeleteEmployee',
@@ -65,10 +64,6 @@ class EmployeesPage {
 
   async clickLogoutButton() {
     return this.headerFragment.clickLogout();
-  }
-
-  async getLogoutButton() {
-    return this.headerFragment.getLogout();
   }
 
   async getUserInfo() {

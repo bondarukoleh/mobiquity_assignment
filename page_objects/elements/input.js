@@ -19,6 +19,7 @@ class Input {
   async getData() {
     await waitForVisible(this.root);
     return browser.executeScript(function(rootElement){
+      // getting information about input and it's label in one place
       return {
         value: rootElement.querySelector('input').value,
         label: rootElement.querySelector('span') ? rootElement.querySelector('span').innerText : '',

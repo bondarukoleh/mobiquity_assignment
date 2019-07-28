@@ -6,14 +6,9 @@ const methodsToDecorate = [
   'fillEditForm',
   'getEditForm',
   'clickUpdateButton',
-  'getUpdateButton',
   'clickDeleteButton',
-  'getDeleteButton',
   'clickLogoutButton',
-  'getLogoutButton',
-  'getUserInfo',
   'clickBackButton',
-  'getBackButton',
   'confirmDeleteEmployee'
 ];
 
@@ -26,6 +21,7 @@ class EditEmployeePage {
     stepDecorator(this, methodsToDecorate);
   }
 
+  // destructuring assignment - to have ability to send not all fields data to method
   async fillEditForm({firstName = '', lastName = '', startDate = '', email = ''} = {}) {
     return this.formFragment.fillForm({firstName, lastName, startDate, email});
   }
@@ -38,36 +34,16 @@ class EditEmployeePage {
     return this.formFragment.clickUpdate();
   }
 
-  async getUpdateButton() {
-    return this.formFragment.getUpdateButton();
-  }
-
   async clickDeleteButton() {
     return this.formFragment.clickDelete();
-  }
-
-  async getDeleteButton() {
-    return this.formFragment.getDelete();
   }
 
   async clickLogoutButton() {
     return this.headerFragment.clickLogout();
   }
 
-  async getLogoutButton() {
-    return this.headerFragment.getLogout();
-  }
-
-  async getUserInfo() {
-    return this.headerFragment.getUserInfo();
-  }
-
   async clickBackButton() {
     await this.back.click();
-  }
-
-  async getBackButton() {
-    await this.back.getData();
   }
 
   async confirmDeleteEmployee() {

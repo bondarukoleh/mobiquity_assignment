@@ -30,6 +30,7 @@ class LoginPage {
     return this.loginButton.click();
   }
 
+  // destructuring assignment - to have ability to send not all fields data to method
   async login({name = '', pass = ''} = {}) {
     await this.enterUserName(name);
     await this.enterPassword(pass);

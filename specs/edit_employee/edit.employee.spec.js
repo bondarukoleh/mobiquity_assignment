@@ -66,7 +66,7 @@ describe('Edit employee suite', function () {
     });
   });
 
-  it.only(`Check that not valid update isn't saved`, async function () {
+  it(`Check that not valid update isn't saved`, async function () {
     const emailBeforeUpdate = employee.email;
     employee.email = '';
 

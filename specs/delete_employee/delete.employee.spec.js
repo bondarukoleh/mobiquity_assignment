@@ -35,7 +35,7 @@ describe('Delete employee suite', function () {
   it(`Delete employee via "Delete" button on edit employees page`, async function () {
     await employeesPage.clickEditButton();
     await editEmployeePage.clickDeleteButton();
-    await employeesPage.confirmDeleteEmployee();
+    await editEmployeePage.confirmDeleteEmployee();
     const employees = await employeesPage.getEmployees();
 
     await assertion(`Check that deleted employee isn't in list`, async () => {

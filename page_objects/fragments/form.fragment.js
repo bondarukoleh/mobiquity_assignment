@@ -40,6 +40,7 @@ class FormFragment {
    * @param {object<firstName, lastName, startDate, email>} fillFormData 
    */
   async fillForm(fillFormData) {
+    // Shorter way to sendKeys to inputs, keys of fillFormData should be same name with class input fields
     for (const [fieldName, dataToSend] of Object.entries(fillFormData)) {
       await this[fieldName].sendKeys(dataToSend);
     }

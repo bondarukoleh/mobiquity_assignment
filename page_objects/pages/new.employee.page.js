@@ -6,12 +6,7 @@ const methodsToDecorate = [
   'fillAddForm',
   'getAddForm',
   'clickAddButton',
-  'getAddButton',
   'clickCancelButton',
-  'getCancelButton',
-  'clickLogoutButton',
-  'getLogoutButton',
-  'getUserInfo',
   'confirmDateAlert',
   'getDateAlert'
 ];
@@ -25,6 +20,7 @@ class NewEmployeePage {
     stepDecorator(this, methodsToDecorate);
   }
 
+  // destructuring assignment - to have ability to send not all fields data to method
   async fillAddForm({firstName = '', lastName = '', startDate = '', email = ''} = {}) {
     return this.addFragment.fillForm({firstName, lastName, startDate, email});
   }
@@ -37,28 +33,8 @@ class NewEmployeePage {
     return this.addFragment.clickAdd();
   }
 
-  async getAddButton() {
-    return this.addFragment.getAdd();
-  }
-
   async clickCancelButton() {
     return this.cancel.click();
-  }
-
-  async getCancelButton() {
-    return this.cancel.getData();
-  }
-
-  async clickLogoutButton() {
-    return this.headerFragment.clickLogout();
-  }
-
-  async getLogoutButton() {
-    return this.headerFragment.getLogout();
-  }
-
-  async getUserInfo() {
-    return this.headerFragment.getUserInfo();
   }
 
   async confirmDateAlert() {

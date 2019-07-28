@@ -14,6 +14,7 @@ class Button {
     await waitForVisible(this.root);
     return {
       text: await this.root.getText(),
+      // it's more fast and flexible way to get attributes from element
       enabled: await browser.executeScript(function(root){
         return !root.getAttribute('class').includes('disabled');
       }, this.root.getWebElement())
