@@ -16,7 +16,8 @@ module.exports.config = {
   capabilities: {
     browserName: 'chrome',
     unexpectedAlertBehaviour: 'accept',
-    count: 2,
+    maxInstances: 2,
+    shardTestFiles: true,
     version: '70',
     chromeOptions: {
       args: [
