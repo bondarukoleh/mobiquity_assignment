@@ -24,10 +24,35 @@ function stepDecorator(instanceContext, methodsNames) {
         console.log(`Failed method - "${methodName}" and arguments: ${JSON.stringify(args)}.`);
         allureAvailable ? allureEndStep('failed') : stepStub();
         await takeScreenshoot(methodName);
-        return e;
+        throw e;
       }
     };
   }
 }
 
-module.exports = {stepDecorator};
+
+/**
+ * Function makes screenshot if assertion fails. Helps to debug tests.
+ * Assertion function made async - just for consistency with async assertion decorator.
+ * @param {string} assertionName 
+ * @param {async () => {}} assertFunction 
+ */
+async function assertionWithAllure(assertionName, assertFunction) {
+  try {
+    allureStartStep(assertionName);
+    await assertFunction();
+    allureEndStep('passed');
+  } catch (e) {
+    allureEndStep('failed');
+    await takeScreenshoot();
+    throw e;
+  }
+}
+
+async function assertionStub(assertionName, assertFunction) {
+  await assertFunction();
+}
+
+const assertion = allureAvailable ? assertionWithAllure : assertionStub;
+
+module.exports = {stepDecorator, assertion};

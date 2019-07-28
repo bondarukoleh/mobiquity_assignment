@@ -7,7 +7,7 @@ const {ExpectedConditions, ElementFinder} = require('protractor');
  */
 async function waitForVisible(element, timeToWait = 3000) {
   await browser.wait(ExpectedConditions.visibilityOf(element), timeToWait,
-    `Element ${element.locator} should be visible.`);
+    `Element ${element.locator()} should be visible.`);
 }
 
 async function waitForAlert(timeToWait = 3000) {

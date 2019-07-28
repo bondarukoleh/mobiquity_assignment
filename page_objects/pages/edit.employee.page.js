@@ -1,4 +1,4 @@
-const {Button} = require('../elements');
+const {Button, Alert} = require('../elements');
 const {HeaderFragment, FormFragment} = require('../fragments');
 const {stepDecorator} = require('../../helpers');
 
@@ -13,7 +13,8 @@ const methodsToDecorate = [
   'getLogoutButton',
   'getUserInfo',
   'clickBackButton',
-  'getBackButton'
+  'getBackButton',
+  'confirmDeleteEmployee'
 ];
 
 class EditEmployeePage {
@@ -21,11 +22,12 @@ class EditEmployeePage {
     this.headerFragment = new HeaderFragment();
     this.formFragment = new FormFragment();
     this.back = new Button($('.bBack'));
+    this.deleteAlert = new Alert();
     stepDecorator(this, methodsToDecorate);
   }
 
-  async fillEditForm({fistName, lastName, startDate, email}) {
-    return this.formFragment.fillForm({fistName, lastName, startDate, email});
+  async fillEditForm({firstName = '', lastName = '', startDate = '', email = ''} = {}) {
+    return this.formFragment.fillForm({firstName, lastName, startDate, email});
   }
 
   async getEditForm() {
@@ -66,6 +68,10 @@ class EditEmployeePage {
 
   async getBackButton() {
     await this.back.getData();
+  }
+
+  async confirmDeleteEmployee() {
+    await this.deleteAlert.accept();
   }
 }
 

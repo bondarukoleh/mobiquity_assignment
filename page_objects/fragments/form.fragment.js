@@ -3,9 +3,10 @@ const {Button, Input} = require('../elements');
 class FormFragment {
   constructor() {
     this.add = new Button(element(by.buttonText('Add')));
-    this.delete = new Button(element(by.buttonText('Delete')));
+    this.delete = new Button($('.formFooter p'));
     this.update = new Button(element(by.buttonText('Update')));
-    this.fistName = new Input(element(by.xpath('//input[contains(@ng-model, "firstName")]//parent::label')));
+    this.cancel = new Button(element(by.buttonText('Cancel')));
+    this.firstName = new Input(element(by.xpath('//input[contains(@ng-model, "firstName")]//parent::label')));
     this.lastName = new Input(element(by.xpath('//input[contains(@ng-model, "lastName")]//parent::label')));
     this.startDate = new Input(element(by.xpath('//input[contains(@ng-model, "startDate")]//parent::label')));
     this.email = new Input(element(by.xpath('//input[contains(@ng-model, "email")]//parent::label')));
@@ -36,7 +37,7 @@ class FormFragment {
   }
 
   /**
-   * @param {object<fistName, lastName, startDate, email>} fillFormData 
+   * @param {object<firstName, lastName, startDate, email>} fillFormData 
    */
   async fillForm(fillFormData) {
     for (const [fieldName, dataToSend] of Object.entries(fillFormData)) {
@@ -46,7 +47,7 @@ class FormFragment {
 
   async getFormData() {
     return {
-      fistName: await this.fistName.getData(),
+      firstName: await this.firstName.getData(),
       lastName: await this.lastName.getData(),
       startDate: await this.startDate.getData(),
       email: await this.email.getData()
@@ -59,6 +60,10 @@ class FormFragment {
 
   async clickCreate() {
     await this.update.click();
+  }
+
+  async clickCancel() {
+    await this.cancel.click();
   }
 }
 

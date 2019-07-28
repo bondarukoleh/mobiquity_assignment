@@ -19,6 +19,6 @@
     "no-undef": 1,
     "no-var": 1,
     "semi": 1,
-    "max-len": [1, {"code": 120}]
+    "max-len": [1, {"code": 120}],
   }
 }

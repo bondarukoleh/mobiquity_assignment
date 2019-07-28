@@ -13,9 +13,7 @@ class Alert {
 
   async getText() {
     await waitForAlert();
-    return browser.switchTo().alert().getText()
-    .then((text) => text)
-    .catch((err) => err);
+    return browser.switchTo().alert().getText();
   }
 }
 

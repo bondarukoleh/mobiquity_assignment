@@ -1,4 +1,4 @@
-const {Button} = require('../elements');
+const {Button, Alert} = require('../elements');
 const {HeaderFragment, FormFragment} = require('../fragments');
 const {stepDecorator} = require('../../helpers');
 
@@ -11,7 +11,9 @@ const methodsToDecorate = [
   'getCancelButton',
   'clickLogoutButton',
   'getLogoutButton',
-  'getUserInfo'
+  'getUserInfo',
+  'confirmDateAlert',
+  'getDateAlert'
 ];
 
 class NewEmployeePage {
@@ -19,11 +21,12 @@ class NewEmployeePage {
     this.headerFragment = new HeaderFragment();
     this.addFragment = new FormFragment();
     this.cancel = new Button($('.bCancel'));
+    this.dateValidationAlert = new Alert();
     stepDecorator(this, methodsToDecorate);
   }
 
-  async fillAddForm({fistName, lastName, startDate, email}) {
-    return this.addFragment.fillForm({fistName, lastName, startDate, email});
+  async fillAddForm({firstName = '', lastName = '', startDate = '', email = ''} = {}) {
+    return this.addFragment.fillForm({firstName, lastName, startDate, email});
   }
 
   async getAddForm() {
@@ -56,6 +59,14 @@ class NewEmployeePage {
 
   async getUserInfo() {
     return this.headerFragment.getUserInfo();
+  }
+
+  async confirmDateAlert() {
+    await this.dateValidationAlert.accept();
+  }
+
+  async getDateAlert() {
+    return this.dateValidationAlert.getText();
   }
 }
 

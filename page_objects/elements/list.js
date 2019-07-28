@@ -16,7 +16,9 @@ class List {
 
   async getData() {
     await waitForVisible(this.root);
-    return this.liElements.map((element) => ({text: element.getText()}));
+    return browser.executeScript(function (elements){
+      return Array.prototype.map.call(elements, (element) => element.innerText.trim());
+    }, this.liElements.getWebElements());
   }
 }
 
