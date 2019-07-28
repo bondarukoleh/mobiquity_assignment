@@ -44,7 +44,7 @@ Run in terminal:
 If tests didn't run, after `npm test`, probably something goes wrong with selenium server.
 Try to run tests without it.
 Run in terminal:
-`npm test:direct`
+`npm run test:direct`
 
 If still no result - you have Chrome not 75th version - it's easy to update it.
 
