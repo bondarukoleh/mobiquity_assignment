@@ -22,8 +22,8 @@ function stepDecorator(instanceContext, methodsNames) {
         return result;
       } catch (e) {
         console.log(`Failed method - "${methodName}" and arguments: ${JSON.stringify(args)}.`);
-        allureAvailable ? allureEndStep('failed') : stepStub();
         await takeScreenshoot(methodName);
+        allureAvailable ? allureEndStep('failed') : stepStub();
         throw e;
       }
     };
@@ -43,8 +43,8 @@ async function assertionWithAllure(assertionName, assertFunction) {
     await assertFunction();
     allureEndStep('passed');
   } catch (e) {
-    allureEndStep('failed');
     await takeScreenshoot();
+    allureEndStep('failed');
     throw e;
   }
 }
