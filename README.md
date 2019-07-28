@@ -38,7 +38,7 @@ Run in terminal:
 `npm run report`
 
 ***
-#### Troubleshot:
+#### Troubleshoot:
 
 ##### Tests didn't run.
 If tests didn't run, after `npm test`, probably something goes wrong with selenium server.
@@ -93,7 +93,7 @@ Basic scheme of page:
 ### About tools
 **Protractor** - is test framework specially created for Angular apps, it has synchronization with Angular, and
 we need less waiters in it, and it has special angular selectors (e.g. by.model) and a lot of stuff that 
-helps QA to test web application. Since test app is Angular - it's a nice choice. Also it is a great 
+helps QA to test web application. Since test app is Angular - it's a nice choice. Also it has great 
 functionality with less code to type other than regular Selenium Webdriver JS.
 You can checkout it [here](https://www.protractortest.org/#/ "https://www.protractortest.org/#/")
 
@@ -110,7 +110,7 @@ You can checkout it [here](https://docs.qameta.io/allure/ "https://docs.qameta.i
 There are several scripts to run tests in different way.
 `npm run start:driver` - to run selenium server by yourself. It should start server on http://localhost:4444/wd/hub
 url, and you can manage this url in protractor.conf.js file.
-`npm run test:debug` - to run tests with results in terminal. In won't involve allure reporter, and will print
+`npm run test:debug` - to run tests with results in terminal. It won't involve allure reporter, and will print
 test results in your terminal - you can easily understand what's going wrong.
 `npm run test:direct` - to run tests without selenium server, directly sending requests to the browser driver.
 `npm run lint` - to run code linter, to check that you have not done any obvious mistakes and code style is ok.
